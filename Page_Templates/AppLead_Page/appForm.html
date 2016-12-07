@@ -1,0 +1,120 @@
+<ng-form name="AppForm" id="AppForm">
+    <div class="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="col-xs-9">
+                <div class="panel panel-blue">
+                    <div class="panel-heading"><h4>Application Details</h4></div>
+                    <div class="panel-body">
+                        <!--Application ID-->
+                        
+                        <div class="row form-group sr-only" >
+                            <div class="col-xs-8">
+                                <input ng-model="AppFormCtrl.rawDataAppForm.ApplicationID"
+                                       type="text" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Application Official Name</label>
+                            <div class="col-xs-8">
+                                <input ng-model="AppFormCtrl.rawDataAppForm.ApplicationOfficialName"
+                                       required type="text" name="ApplicationOfficialName" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Application Common Name</label>
+                            <div class="col-xs-8">
+                                <input ng-model="AppFormCtrl.rawDataAppForm.ApplicationCommonName"
+                                       required type="text" name="ApplicationCommonName" class=" form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Application Owner</label>
+                            <div class="col-xs-8">
+                                <input ng-model="AppFormCtrl.rawDataAppForm.ApplicationOwner"
+                                       required type="text" name="ApplicationOwner" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Other Basic Application Information</label>
+                            <div class="col-xs-8">
+                                <textarea required ng-model="AppFormCtrl.rawDataAppForm.OtherBasicApplicationInformation"
+                                          rows="4" name="OtherBasicApplicationInformation" class="form-control input-sm"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Comments</label>
+                            <div class="col-xs-8">
+                                <textarea required ng-model="AppFormCtrl.rawDataAppForm.Comments"
+                                          rows="4" name="Comments" class="form-control input-sm"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Recommended Testing Frequency</label>
+                            <div class="col-xs-8">
+                                <input ng-model="AppFormCtrl.rawDataAppForm.RecommendTestingFrequency"
+                                       required type="text" name="RecommendTestingFrequency" id="RecommendTestingFrequency" class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Last Test Date</label>
+                            <div class="col-xs-8">
+                                <input id="lastDate"
+                                       ng-model="AppFormCtrl.rawDataAppForm.LastTestDate"
+                                       required type="text" name="LastTestDate" class="dateInput form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Next Test Date</label>
+                            <div class="col-xs-8">
+                                <input id="nextDate"
+                                       ng-model="AppFormCtrl.rawDataAppForm.NextTestDate"
+                                       required type="text" name="NextTestDate" class="dateInput form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="row form-group form-horizontal">
+                            <label class="control-label col-xs-4">Business Group Name</label>
+                            <div class="col-xs-8">
+                                <select class="form-control input-sm"
+                                        name="BusinessGroupName"
+                                        required
+                                        ng-model="AppFormCtrl.rawDataAppForm.BusinessGroupID"
+                                        ng-options="businessGroup.BusinessGroupID as businessGroup.BusinessGroupName for businessGroup in AppFormCtrl.businessGroupListsAppForm"></select>
+                            </div>
+                        </div>
+                            <button ng-click="AppForm.ApplicationOfficialName.$valid &&
+                                AppForm.ApplicationCommonName.$valid &&
+                                AppForm.ApplicationOwner.$valid &&
+                                AppForm.OtherBasicApplicationInformation.$valid &&
+                                AppForm.Comments.$valid &&
+                                AppForm.RecommendTestingFrequency.$valid &&
+                                AppForm.NextTestDate.$valid &&
+                                AppForm.BusinessGroupName.$valid && AppFormCtrl.newSaveButton()"
+                                        ng-disabled="!AppForm.ApplicationOfficialName.$valid ||
+                                !AppForm.ApplicationCommonName.$valid ||
+                                !AppForm.ApplicationOwner.$valid ||
+                                !AppForm.OtherBasicApplicationInformation.$valid ||
+                                !AppForm.Comments.$valid ||
+                                !AppForm.RecommendTestingFrequency.$valid ||
+                                !AppForm.NextTestDate.$valid ||
+                                !AppForm.BusinessGroupName.$valid"
+                                    type="button" class="btn btn-default col-xs-2 col-xs-offset-7">
+                                Save&nbsp;<span class="glyphicon glyphicon-floppy-disk"></span>
+                            </button>
+                          
+                            <div ng-if="AppFormCtrl.rawDataAppForm.ApplicationID">
+                                <button ng-click="AppFormCtrl.clearFields();"
+                                        type="button" class="btn btn-default col-xs-2">
+                                    <span ng-hide="AppFormCtrl.rawDataAppForm.ApplicationID">
+                                        New&nbsp;<span class="glyphicon glyphicon-floppy-disk"></span>
+                                    </span>
+                                    <span ng-show="AppFormCtrl.rawDataAppForm.ApplicationID">
+                                        New
+                                    </span>
+                                </button>
+                            </div>
+                    </div>
+                </div><!--class="panel panel-blue"-->
+            </div>
+        </div>
+    </div>
+</ng-form>
